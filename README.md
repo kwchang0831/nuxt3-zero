@@ -73,3 +73,20 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Tool Used
+
+- https://git-cliff.org/
+
+## Note
+
+- https://www.conventionalcommits.org/en/v1.0.0/
+
+| action   | note        |
+| -------- | ----------- |
+| feat     | 新功能      |
+| fix      | 修正 BUG    |
+| doc      | 文檔更新    |
+| perf     | Performance |
+| refactor | refactor    |
+| chore    | chore       |

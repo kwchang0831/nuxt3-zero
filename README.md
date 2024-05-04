@@ -1,92 +1,58 @@
-# Nuxt 3 Minimal Starter1
+# ZERO-NUXT3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 開發環境
 
-## Setup
+```
+node -v
+v20.12.2
 
-Make sure to install the dependencies:
+npm -v
+10.7.0
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm -v
+9.0.6
 ```
 
-## Development Server
+### 啟動開發
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```
+pnpm dev
 ```
 
-## Production
+## [選用] 產生 CHANGELOG
 
-Build the application for production:
+1. 安裝 [Rust](https://www.rust-lang.org/zh-TW/tools/install)
+2. 安裝 [git-cliff](https://git-cliff.org/docs/)
+   ```
+   cargo install git-cliff
+   ```
+3. 生成 CHANGELOG
+   ```
+   git cliff -o CHANGELOG.md
+   ```
 
-```bash
-# npm
-npm run build
+以下是目前 git commit msg 用到的規則
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```
+commit_parsers = [
+  { message = "^feat", group = "<!-- 0 -->⛰️ Features" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
+  { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
+  { message = "^refactor\\(clippy\\)", skip = true },
+  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
+  { message = "^style", group = "<!-- 5 -->🎨 Styling" },
+  { message = "^test", group = "<!-- 6 -->🧪 Testing" },
+  { message = "^chore\\(release\\): prepare for", skip = true },
+  { message = "^chore\\(deps.*\\)", skip = true },
+  { message = "^chore\\(pr\\)", skip = true },
+  { message = "^chore\\(pull\\)", skip = true },
+  { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
+  { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
+  { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
+]
 ```
 
-Locally preview production build:
+## 注意事項
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-
-## Tool Used
-
-- https://git-cliff.org/
-
-## Note
-
-- https://www.conventionalcommits.org/en/v1.0.0/
-
-| action   | note        |
-| -------- | ----------- |
-| feat     | 新功能      |
-| fix      | 修正 BUG    |
-| doc      | 文檔更新    |
-| perf     | Performance |
-| refactor | refactor    |
-| chore    | chore       |
+- 因為使用 eslint flat config， VSCode的 Eslint 的 插件版本必須換到 3.0.5

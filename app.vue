@@ -6,7 +6,11 @@ const pixiContainer = ref<HTMLElement | null>(null)
 const app = new Application()
 
 onMounted(async () => {
-  await app.init({ backgroundAlpha: 0, resizeTo: window })
+  await app.init({
+    backgroundAlpha: 0,
+    resolution: devicePixelRatio,
+    resizeTo: pixiContainer.value ?? window,
+  })
 
   pixiContainer.value?.appendChild(app.canvas)
 
@@ -38,6 +42,13 @@ onMounted(async () => {
     // Continuously rotate the container!
     // * use delta to create frame-independent transform *
     container.rotation -= 0.01 * time.deltaTime
+  })
+
+  window.addEventListener('resize', () => {
+    container.x = app.screen.width / 2
+    container.y = app.screen.height / 2
+    container.pivot.x = container.width / 2
+    container.pivot.y = container.height / 2
   })
 })
 </script>
